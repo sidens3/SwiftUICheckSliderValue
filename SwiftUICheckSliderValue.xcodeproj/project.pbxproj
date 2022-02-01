@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A6B555027A93B0200DB5A86 /* AlphaSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6B554F27A93B0200DB5A86 /* AlphaSlider.swift */; };
+		4A6B555227A9556C00DB5A86 /* MinMaxAlphaSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6B555127A9556C00DB5A86 /* MinMaxAlphaSlider.swift */; };
 		4ABCC07627A92E0C00F52E00 /* SwiftUICheckSliderValueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCC07527A92E0C00F52E00 /* SwiftUICheckSliderValueApp.swift */; };
 		4ABCC07827A92E0C00F52E00 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCC07727A92E0C00F52E00 /* ContentView.swift */; };
 		4ABCC07A27A92E0F00F52E00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ABCC07927A92E0F00F52E00 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A6B554F27A93B0200DB5A86 /* AlphaSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaSlider.swift; sourceTree = "<group>"; };
+		4A6B555127A9556C00DB5A86 /* MinMaxAlphaSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMaxAlphaSlider.swift; sourceTree = "<group>"; };
 		4ABCC07227A92E0C00F52E00 /* SwiftUICheckSliderValue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUICheckSliderValue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ABCC07527A92E0C00F52E00 /* SwiftUICheckSliderValueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICheckSliderValueApp.swift; sourceTree = "<group>"; };
 		4ABCC07727A92E0C00F52E00 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,8 +57,10 @@
 			children = (
 				4ABCC07527A92E0C00F52E00 /* SwiftUICheckSliderValueApp.swift */,
 				4ABCC07727A92E0C00F52E00 /* ContentView.swift */,
+				4A6B554F27A93B0200DB5A86 /* AlphaSlider.swift */,
 				4ABCC07927A92E0F00F52E00 /* Assets.xcassets */,
 				4ABCC07B27A92E0F00F52E00 /* Preview Content */,
+				4A6B555127A9556C00DB5A86 /* MinMaxAlphaSlider.swift */,
 			);
 			path = SwiftUICheckSliderValue;
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ABCC07827A92E0C00F52E00 /* ContentView.swift in Sources */,
+				4A6B555227A9556C00DB5A86 /* MinMaxAlphaSlider.swift in Sources */,
+				4A6B555027A93B0200DB5A86 /* AlphaSlider.swift in Sources */,
 				4ABCC07627A92E0C00F52E00 /* SwiftUICheckSliderValueApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
