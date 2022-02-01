@@ -13,20 +13,12 @@ struct ContentView: View {
     @State var score: Int = 5
     @State var isAlertPresented = false
     
-    private let minValue: Float = 0.0
-    private let maxValue: Float = 100.0
     private let titleText: String = "Подвинь слайдер, как можно ближе к: "
     
     var body: some View {
         VStack(spacing: 10) {
             Text(titleText + "\(targetValue)")
-            HStack (spacing: 10) {
-                Text("\(Int(minValue))")
-                    .padding(.leading, 20)
-                AlphaSlider(minValue: minValue, maxValue: maxValue, currentValue: $currentValue)
-                Text("\(Int(maxValue))")
-                    .padding(.trailing, 20)
-            }
+            MinMaxAlphaSlider(currentValue: $currentValue)
             Button("Проверь меня") {
                 checkResult()
             }
@@ -39,8 +31,6 @@ struct ContentView: View {
             Button("Начать заново") {
                 restart()
             }
-        }.onAppear {
-            currentValue = Float.random(in: minValue...maxValue)
         }
     }
     
