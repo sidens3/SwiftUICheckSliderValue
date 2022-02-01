@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var targetValue: Int = 50
-    //    @Binding var currentValue: Int
+    @State var targetValue: Int = Int.random(in: 0...100)
+    @Binding var currentValue: Double
     @State var isAlertPresented = false
     
+    private let minValue: Float = 0.0
+    private let maxValue: Float = 100.0
     private let titleText: String = "Подвинь слайдер, как можно ближе к: "
     
     var body: some View {
         VStack(spacing: 10) {
             Text(titleText + "\(targetValue)")
             HStack (spacing: 10) {
-                Text("0")
+                Text("\(Int(minValue))")
                     .padding(.leading, 20)
-                AlphaSlider()
-                Text("100")
+                AlphaSlider(minValue: minValue, maxValue: maxValue)
+                Text("\(Int(maxValue))")
                     .padding(.trailing, 20)
             }
             Button("Проверь меня") {
@@ -39,6 +41,11 @@ struct ContentView: View {
         }
     }
     
+    private func computeScore() -> Int {
+        let difference = abs(targetValue - lround(currentValue))
+        return 100 - difference
+    }
+    
     private func checkResult() {
         print("checkResult")
         isAlertPresented.toggle()
@@ -52,6 +59,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(currentValue: .constant(Double(50)))
     }
 }

@@ -8,23 +8,38 @@
 import SwiftUI
 
 struct AlphaSlider: UIViewRepresentable {
-    @State var currentValue: Int = 0
+    let minValue: Float
+    let maxValue: Float
+    
+    @State var currentValue: Float = 50
+    @State var thrumbAlpha = Float.random(in: 0...100)
+    
     
     func makeUIView(context: Context) -> UISlider {
         let slider = UISlider()
         slider.sizeToFit()
         
+        slider.value = Float.random(in: 0...100)
+        slider.minimumValue = minValue
+        slider.maximumValue = maxValue
+        slider.isContinuous = true
+
+        slider.thumbTintColor = .blue.withAlphaComponent(CGFloat(currentValue / 100))
+        
         return slider
     }
     
-    func updateUIView(_ uiView: UISlider, context: Context) {
-        
+    func updateUIView(_ slider: UISlider, context: Context) {
+        DispatchQueue.main.async {
+            currentValue = slider.value
+            slider.thumbTintColor = .blue.withAlphaComponent(CGFloat(currentValue / 100.0))
+        }
     }
 }
 
 
 struct AlphaSlider_Previews: PreviewProvider {
     static var previews: some View {
-        AlphaSlider()
+        AlphaSlider(minValue: 0.0, maxValue: 100.0)
     }
 }
