@@ -10,15 +10,20 @@ import SwiftUI
 struct ContentView: View {
     @State var targetValue: Int = 50
     //    @Binding var currentValue: Int
-    
     @State var isAlertPresented = false
     
-    let titleText: String = "Подвинь слайдер, как можно ближе к: "
+    private let titleText: String = "Подвинь слайдер, как можно ближе к: "
     
     var body: some View {
         VStack(spacing: 10) {
             Text(titleText + "\(targetValue)")
-            Text("slider")
+            HStack (spacing: 10) {
+                Text("0")
+                    .padding(.leading, 20)
+                AlphaSlider()
+                Text("100")
+                    .padding(.trailing, 20)
+            }
             Button("Проверь меня") {
                 checkResult()
             }
