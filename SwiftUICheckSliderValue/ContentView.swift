@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var targetValue: Int = Int.random(in: 0...100)
-    @Binding var currentValue: Double
+    @State var currentValue: Float = 5
     @State var isAlertPresented = false
     
     private let minValue: Float = 0.0
@@ -22,7 +22,7 @@ struct ContentView: View {
             HStack (spacing: 10) {
                 Text("\(Int(minValue))")
                     .padding(.leading, 20)
-                AlphaSlider(minValue: minValue, maxValue: maxValue)
+                AlphaSlider(minValue: minValue, maxValue: maxValue, currentValue: $currentValue)
                 Text("\(Int(maxValue))")
                     .padding(.trailing, 20)
             }
@@ -38,11 +38,13 @@ struct ContentView: View {
             Button("Начать заново") {
                 restart()
             }
+        }.onAppear {
+            currentValue = Float.random(in: minValue...maxValue)
         }
     }
     
     private func computeScore() -> Int {
-        let difference = abs(targetValue - lround(currentValue))
+        let difference = abs(targetValue - lround(Double(currentValue)))
         return 100 - difference
     }
     
@@ -59,6 +61,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(currentValue: .constant(Double(50)))
+        ContentView()
     }
 }

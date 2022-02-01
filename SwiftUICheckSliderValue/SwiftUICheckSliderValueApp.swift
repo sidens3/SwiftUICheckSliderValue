@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftUICheckSliderValueApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(currentValue: .constant(Double(50)))
+            ContentView()
         }
     }
 }
