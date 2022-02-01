@@ -12,6 +12,7 @@ struct AlphaSlider: UIViewRepresentable {
     let maxValue: Float
     
     @Binding var currentValue: Float
+    @Binding var thrumbAlpha: CGFloat
     
     func makeUIView(context: Context) -> UISlider {
         let slider = UISlider()
@@ -30,7 +31,7 @@ struct AlphaSlider: UIViewRepresentable {
     func updateUIView(_ slider: UISlider, context: Context) {
         DispatchQueue.main.async {
             currentValue = slider.value
-            slider.thumbTintColor = .blue.withAlphaComponent(CGFloat(currentValue / 100.0))
+            slider.thumbTintColor = .blue.withAlphaComponent(thrumbAlpha)
         }
     }
     
@@ -56,6 +57,6 @@ extension AlphaSlider {
 
 struct AlphaSlider_Previews: PreviewProvider {
     static var previews: some View {
-        AlphaSlider(minValue: 0.0, maxValue: 100.0, currentValue: .constant(50))
+        AlphaSlider(minValue: 0.0, maxValue: 100.0, currentValue: .constant(50), thrumbAlpha: .constant(50))
     }
 }

@@ -12,13 +12,16 @@ struct ContentView: View {
     @State var currentValue: Float = 5
     @State var score: Int = 5
     @State var isAlertPresented = false
+    @State var thrumbAlpha: CGFloat = 5
     
     private let titleText: String = "Подвинь слайдер, как можно ближе к: "
     
     var body: some View {
         VStack(spacing: 10) {
             Text(titleText + "\(targetValue)")
-            MinMaxAlphaSlider(currentValue: $currentValue)
+            MinMaxAlphaSlider(currentValue: $currentValue, thrumbAlpha: $thrumbAlpha).onChange(of: currentValue) { _ in
+                thrumbAlpha = CGFloat(Float(computeScore()) / Float(100.0))
+            }
             Button("Проверь меня") {
                 checkResult()
             }
