@@ -25,6 +25,7 @@ struct AlphaSlider: UIViewRepresentable {
         slider.isContinuous = true
 
         slider.thumbTintColor = .blue.withAlphaComponent(CGFloat(currentValue / 100))
+        slider.addTarget(context.coordinator, action: #selector(Coordinator.sliderValueDidChange(_:)), for: .valueChanged)
         
         return slider
     }
@@ -33,6 +34,24 @@ struct AlphaSlider: UIViewRepresentable {
         DispatchQueue.main.async {
             currentValue = slider.value
             slider.thumbTintColor = .blue.withAlphaComponent(CGFloat(currentValue / 100.0))
+        }
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(currentValue: $currentValue)
+    }
+}
+
+extension AlphaSlider {
+    class Coordinator: NSObject {
+        @Binding var currentValue: Float
+        
+        init(currentValue: Binding<Float>) {
+            self._currentValue = currentValue
+        }
+        
+        @objc func sliderValueDidChange(_ sender: UISlider) {
+            currentValue = sender.value
         }
     }
 }
