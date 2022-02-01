@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var targetValue: Int = Int.random(in: 0...100)
     @State var currentValue: Float = 5
+    @State var score: Int = 5
     @State var isAlertPresented = false
     
     private let minValue: Float = 0.0
@@ -31,7 +32,7 @@ struct ContentView: View {
             }
             .alert(isPresented: $isAlertPresented) {
                 Alert(title: Text("Your Score"),
-                      message: Text("0"),
+                      message: Text("\(score)"),
                       dismissButton: .cancel(Text("OK"))
                 )
             }
@@ -43,19 +44,21 @@ struct ContentView: View {
         }
     }
     
-    private func computeScore() -> Int {
-        let difference = abs(targetValue - lround(Double(currentValue)))
-        return 100 - difference
-    }
-    
     private func checkResult() {
         print("checkResult")
         isAlertPresented.toggle()
+        score = computeScore()
+        
     }
     
     private func restart() {
         print("restart")
         targetValue = Int.random(in: 0...100)
+    }
+    
+    private func computeScore() -> Int {
+        let difference = abs(targetValue - lround(Double(currentValue)))
+        return 100 - difference
     }
 }
 
